@@ -376,234 +376,46 @@ const faqs = [
             </div>
         </header>
 
-        <!-- 2. HERO SECTION (Asymmetric, screenshot-led per FireVault design guideline) -->
-        <section class="relative border-b border-[#2B2F38] overflow-hidden">
+        <!-- 2. HERO SECTION: Free Fire Character (No BG) & Site Information + Synchronized Search & Filters -->
+        <section
+            class="relative border-b border-[#2B2F38] overflow-hidden bg-gradient-to-b from-[#181B21]/60 via-[#0F1115] to-[#0F1115]"
+        >
             <!-- Ambient Vault Glow -->
             <div
-                class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-[#E3A339]/10 via-[#3FA79B]/5 to-transparent rounded-full blur-3xl pointer-events-none"
+                class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-[#E3A339]/12 via-[#3FA79B]/8 to-transparent rounded-full blur-3xl pointer-events-none"
             ></div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 relative z-10"
+            >
                 <div
                     class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
                 >
-                    <!-- Left Hero: Featured Real Screenshot with Rich Overlay -->
-                    <div class="lg:col-span-6 relative">
+                    <!-- Left Side: Site Welcome, Narrative, Synchronized Search, Filters & Trust Metrics -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <!-- Welcome Badge -->
                         <div
-                            class="relative bg-[#181B21] border border-[#2B2F38] rounded-xl overflow-hidden shadow-2xl group transition-all duration-300 hover:border-[#8E93A0]/60"
+                            class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#E3A339]/10 border border-[#E3A339]/30 text-[#E3A339] text-xs font-semibold shadow-sm"
                         >
-                            <!-- Top Overlay Badges -->
-                            <div
-                                class="absolute top-3.5 inset-x-3.5 z-10 flex items-center justify-between"
-                            >
-                                <span
-                                    class="px-2.5 py-1 rounded text-xs font-bold bg-[#E3A339] text-[#0F1115] shadow-md flex items-center space-x-1"
-                                >
-                                    <Sparkles
-                                        class="w-3.5 h-3.5 fill-current"
-                                    />
-                                    <span>Featured Today</span>
-                                </span>
-
-                                <span
-                                    class="px-2.5 py-1 rounded text-xs font-medium bg-[#0F1115]/85 backdrop-blur-sm border border-[#2B2F38] text-[#3FA79B] flex items-center space-x-1.5 shadow"
-                                >
-                                    <span
-                                        class="w-2 h-2 rounded-full bg-[#3FA79B] animate-pulse"
-                                    ></span>
-                                    <span>Available ●</span>
-                                </span>
-                            </div>
-
-                            <!-- Real Image with Gradient Scrim -->
-                            <div
-                                class="relative aspect-[16/10] overflow-hidden bg-[#0F1115]"
-                            >
-                                <img
-                                    :src="
-                                        heroListing
-                                            ? getListingCover(heroListing)
-                                            : 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop'
-                                    "
-                                    :alt="
-                                        heroListing?.title ||
-                                        'Featured Free Fire Account'
-                                    "
-                                    class="w-full h-full object-cover transform group-hover:scale-103 transition-transform duration-700"
-                                />
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#181B21] via-transparent to-transparent opacity-90"
-                                ></div>
-                            </div>
-
-                            <!-- Card Data Overlay -->
-                            <div class="p-5 -mt-8 relative z-10 space-y-3.5">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <h3
-                                            class="font-['Sora',sans-serif] font-bold text-lg text-[#EDE9DE] group-hover:text-[#E3A339] transition-colors"
-                                        >
-                                            {{
-                                                heroListing?.title ||
-                                                "Grandmaster Max Evo Loadout"
-                                            }}
-                                        </h3>
-                                        <div
-                                            class="flex items-center space-x-2 text-xs text-[#8E93A0] mt-0.5"
-                                        >
-                                            <span class="font-mono"
-                                                >UID:
-                                                {{
-                                                    heroListing?.uid ||
-                                                    "1029384756"
-                                                }}</span
-                                            >
-                                            <span>•</span>
-                                            <span>{{
-                                                heroListing?.account_age ||
-                                                "Season 2 Player"
-                                            }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <span
-                                            class="text-[10px] text-[#8E93A0] block uppercase tracking-wider"
-                                            >দাম (Price)</span
-                                        >
-                                        <span
-                                            class="font-['Sora',sans-serif] font-bold text-xl sm:text-2xl text-[#E3A339]"
-                                        >
-                                            {{
-                                                heroListing
-                                                    ? formatPrice(
-                                                          heroListing.price,
-                                                      )
-                                                    : "৳ ৮,৫০০"
-                                            }}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <!-- Spec Pills Grid -->
-                                <div class="grid grid-cols-4 gap-2 text-xs">
-                                    <div
-                                        class="p-2 bg-[#20242C] rounded-md border border-[#2B2F38] text-center"
-                                    >
-                                        <span
-                                            class="text-[10px] text-[#8E93A0] block"
-                                            >Level</span
-                                        >
-                                        <span
-                                            class="font-['Sora',sans-serif] font-bold text-[#EDE9DE]"
-                                            >{{
-                                                heroListing?.level || 74
-                                            }}</span
-                                        >
-                                    </div>
-                                    <div
-                                        class="p-2 bg-[#20242C] rounded-md border border-[#2B2F38] text-center"
-                                    >
-                                        <span
-                                            class="text-[10px] text-[#8E93A0] block"
-                                            >Evo Guns</span
-                                        >
-                                        <span
-                                            class="font-['Sora',sans-serif] font-bold text-[#E3A339]"
-                                            >{{
-                                                heroListing?.gun_skin_count ||
-                                                14
-                                            }}</span
-                                        >
-                                    </div>
-                                    <div
-                                        class="p-2 bg-[#20242C] rounded-md border border-[#2B2F38] text-center"
-                                    >
-                                        <span
-                                            class="text-[10px] text-[#8E93A0] block"
-                                            >Passes</span
-                                        >
-                                        <span
-                                            class="font-['Sora',sans-serif] font-bold text-[#EDE9DE]"
-                                            >{{
-                                                heroListing?.elite_pass_count ||
-                                                19
-                                            }}</span
-                                        >
-                                    </div>
-                                    <div
-                                        class="p-2 bg-[#20242C] rounded-md border border-[#2B2F38] text-center"
-                                    >
-                                        <span
-                                            class="text-[10px] text-[#8E93A0] block"
-                                            >Rare Items</span
-                                        >
-                                        <span
-                                            class="font-['Sora',sans-serif] font-bold text-[#3FA79B]"
-                                            >{{
-                                                heroListing?.rare_item_count ||
-                                                28
-                                            }}</span
-                                        >
-                                    </div>
-                                </div>
-
-                                <!-- Bottom Row with Quick Modal Action -->
-                                <div
-                                    class="pt-2 border-t border-[#2B2F38] flex items-center justify-between text-xs"
-                                >
-                                    <span
-                                        class="text-[#8E93A0] flex items-center space-x-1.5"
-                                    >
-                                        <ShieldCheck
-                                            class="w-4 h-4 text-[#3FA79B]"
-                                        />
-                                        <span
-                                            >Verified by @{{
-                                                heroListing?.moderator
-                                                    ?.username || "masum"
-                                            }}</span
-                                        >
-                                    </span>
-                                    <button
-                                        v-if="heroListing"
-                                        @click="openModal(heroListing)"
-                                        class="px-3 py-1 bg-[#20242C] hover:bg-[#2B2F38] text-[#E3A339] border border-[#2B2F38] rounded-md text-xs font-semibold flex items-center space-x-1 transition-colors"
-                                    >
-                                        <span>ডিটেইলস ও ছবি</span>
-                                        <ChevronRight class="w-3.5 h-3.5" />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Hero: Narrative + Direct Fast Search Bar -->
-                    <div class="lg:col-span-6 space-y-6">
-                        <div
-                            class="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-[#3FA79B]/10 border border-[#3FA79B]/20 text-[#3FA79B] text-xs font-medium"
-                        >
-                            <Lock class="w-3.5 h-3.5" />
-                            <span>১০০% সেফ ও ট্রাস্টেড ডিল পোর্টাল</span>
+                            <Flame class="w-4 h-4 fill-current text-[#E3A339]" />
+                            <span>Gaming With Masum — বাংলাদেশের #১ ভেরিফাইড ফ্রি ফায়ার আইডি ভল্ট</span>
                         </div>
 
+                        <!-- Welcoming Main Headline & Narrative -->
                         <div class="space-y-3">
                             <h1
                                 class="text-3xl sm:text-4xl lg:text-5xl font-['Sora',sans-serif] font-bold text-[#EDE9DE] leading-[1.15] tracking-tight"
                             >
-                                The account is real. The seller is verified. The
-                                handoff is on WhatsApp.
+                                The account is real. The seller is verified. The handoff is on WhatsApp.
                             </h1>
                             <p
                                 class="text-sm sm:text-base text-[#8E93A0] font-['Hind_Siliguri',sans-serif] leading-relaxed"
                             >
-                                ফায়ারভল্ট — ফ্রি ফায়ার আইডি কেনাবেচার একমাত্র
-                                নির্ভরযোগ্য প্ল্যাটফর্ম। কোনো ভুয়া ব্রোকার বা
-                                থার্ড-পার্টি বট নয়, সরাসরি আমাদের ভেরিফাইড
-                                মডারেটরের মাধ্যমে নিরাপদ ও স্বচ্ছ ডিল।
+                                গেমিং উইথ মাছুম (Gaming With Masum) প্ল্যাটফর্মে আপনাকে স্বাগতম! এখানে প্রতিটি ফ্রি ফায়ার অ্যাকাউন্টের ইউআইডি, গান স্কিন, লেভেল এবং সেলারের আইডেন্টিটি মাছুম ভাই ও আমাদের অভিজ্ঞ মডারেটর টিম দ্বারা সরাসরি পরীক্ষা করে লিস্ট করা হয়। কোনো ফেক ব্রোকার বা থার্ড-পার্টি প্রতারণার ভয় ছাড়াই সরাসরি হোয়াটসঅ্যাপে নিরাপদ হ্যান্ডওভার সম্পন্ন করুন।
                             </p>
                         </div>
 
-                        <!-- Direct Search Bar (Design Guideline Hero Feature) -->
+                        <!-- Synchronized Direct Search Bar -->
                         <form @submit="executeHeroSearch" class="relative">
                             <div
                                 class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#8E93A0]"
@@ -613,49 +425,111 @@ const faqs = [
                             <input
                                 v-model="heroSearch"
                                 type="text"
-                                placeholder="Search by Title, UID (e.g. 19283...), or Gun Skin..."
-                                class="w-full pl-10 pr-28 py-3 bg-[#181B21] border border-[#2B2F38] focus:border-[#E3A339] focus:ring-1 focus:ring-[#E3A339] rounded-md text-xs sm:text-sm text-[#EDE9DE] placeholder-[#8E93A0] transition-colors shadow-sm"
+                                placeholder="Search by ID Title, UID (e.g. 19283...), or Gun Skin..."
+                                class="w-full pl-10 pr-28 py-3.5 bg-[#181B21] border border-[#2B2F38] focus:border-[#E3A339] focus:ring-1 focus:ring-[#E3A339] rounded-lg text-xs sm:text-sm text-[#EDE9DE] placeholder-[#8E93A0] transition-colors shadow-sm"
                             />
                             <button
                                 type="submit"
-                                class="absolute inset-y-1.5 right-1.5 px-4 bg-[#E3A339] hover:bg-[#E3A339]/90 text-xs font-bold text-[#0F1115] rounded transition-colors shadow flex items-center space-x-1"
+                                class="absolute inset-y-1.5 right-1.5 px-4 bg-[#E3A339] hover:bg-[#E3A339]/90 text-xs font-bold text-[#0F1115] rounded-md transition-colors shadow flex items-center space-x-1"
                             >
                                 <span>ক্যাটালগে খুঁজুন</span>
                             </button>
                         </form>
 
-                        <!-- Quick Category Shortcuts -->
+                        <!-- Synchronized Popular Filter Bar -->
                         <div
                             class="flex flex-wrap items-center gap-2 text-xs font-['Hind_Siliguri',sans-serif]"
                         >
-                            <span class="text-[#8E93A0]">জনপ্রিয় ফিল্টার:</span>
+                            <span class="text-[#8E93A0] font-medium">জনপ্রিয় ফিল্টার:</span>
                             <Link
                                 href="/listings?category=evo"
-                                class="px-2.5 py-1 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] rounded hover:border-[#E3A339]/60 transition-colors"
+                                class="px-2.5 py-1 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] hover:border-[#E3A339]/60 rounded-md transition-colors flex items-center space-x-1"
                             >
-                                ইভো গান
+                                <Zap class="w-3 h-3 text-[#E3A339]" />
+                                <span>ইভো গান</span>
                             </Link>
                             <Link
                                 href="/listings?category=old"
-                                class="px-2.5 py-1 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] rounded hover:border-[#E3A339]/60 transition-colors"
+                                class="px-2.5 py-1 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] hover:border-[#E3A339]/60 rounded-md transition-colors flex items-center space-x-1"
                             >
-                                ওল্ড সিজন
+                                <Flame class="w-3 h-3 text-[#E3A339]" />
+                                <span>ওল্ড সিজন</span>
                             </Link>
                             <Link
                                 href="/listings?category=high_level"
-                                class="px-2.5 py-1 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] rounded hover:border-[#E3A339]/60 transition-colors"
+                                class="px-2.5 py-1 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] hover:border-[#3FA79B]/60 rounded-md transition-colors flex items-center space-x-1"
                             >
-                                ৭০+ লেভেল
+                                <Crosshair class="w-3 h-3 text-[#3FA79B]" />
+                                <span>৭০+ লেভেল</span>
                             </Link>
                             <Link
                                 href="/listings?category=budget"
-                                class="px-2.5 py-1 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] rounded hover:border-[#E3A339]/60 transition-colors"
+                                class="px-2.5 py-1 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] hover:border-[#3FA79B]/60 rounded-md transition-colors flex items-center space-x-1"
                             >
-                                বাজেট আইডি (≤ ৫,০০০)
+                                <Award class="w-3 h-3 text-[#3FA79B]" />
+                                <span>বাজেট আইডি (≤ ৫,০০০)</span>
                             </Link>
                         </div>
 
-                        <!-- Trust Metrics Grid -->
+                        <!-- 4 Core Trust Highlights (About The Site) -->
+                        <div class="grid grid-cols-2 gap-2.5 text-xs font-['Hind_Siliguri',sans-serif]">
+                            <div class="p-2.5 bg-[#181B21] rounded-lg border border-[#2B2F38] flex items-start space-x-2">
+                                <CheckCircle2 class="w-4 h-4 text-[#3FA79B] shrink-0 mt-0.5" />
+                                <div>
+                                    <span class="font-bold text-[#EDE9DE] block text-[11px]">১০০% পরীক্ষিত আইডি</span>
+                                    <span class="text-[10px] text-[#8E93A0] leading-tight block">ইউআইডি ও সব কালেকশন ভেরিফাইড</span>
+                                </div>
+                            </div>
+                            <div class="p-2.5 bg-[#181B21] rounded-lg border border-[#2B2F38] flex items-start space-x-2">
+                                <Users class="w-4 h-4 text-[#E3A339] shrink-0 mt-0.5" />
+                                <div>
+                                    <span class="font-bold text-[#EDE9DE] block text-[11px]">মাছুম সরাসরি মধ্যস্থতা</span>
+                                    <span class="text-[10px] text-[#8E93A0] leading-tight block">অভিজ্ঞ মডারেটরের উপস্থিতিতে ডিল</span>
+                                </div>
+                            </div>
+                            <div class="p-2.5 bg-[#181B21] rounded-lg border border-[#2B2F38] flex items-start space-x-2">
+                                <Zap class="w-4 h-4 text-[#3FA79B] shrink-0 mt-0.5" />
+                                <div>
+                                    <span class="font-bold text-[#EDE9DE] block text-[11px]">তাত্ক্ষণিক হ্যান্ডওভার</span>
+                                    <span class="text-[10px] text-[#8E93A0] leading-tight block">হোয়াটসঅ্যাপে দ্রুত আইডি হস্তান্তর</span>
+                                </div>
+                            </div>
+                            <div class="p-2.5 bg-[#181B21] rounded-lg border border-[#2B2F38] flex items-start space-x-2">
+                                <Lock class="w-4 h-4 text-[#E3A339] shrink-0 mt-0.5" />
+                                <div>
+                                    <span class="font-bold text-[#EDE9DE] block text-[11px]">০% স্ক্যাম রেকর্ড</span>
+                                    <span class="text-[10px] text-[#8E93A0] leading-tight block">মানি-ব্যাক ও সিকিউর বাইন্ড সাপোর্ট</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action CTA Buttons (English & Bangla Friendly) -->
+                        <div class="flex flex-wrap items-center gap-3 pt-1">
+                            <Link
+                                href="/listings"
+                                class="px-5 py-2.5 bg-[#E3A339] hover:bg-[#E3A339]/90 text-[#0F1115] font-['Sora',sans-serif] font-bold text-xs sm:text-sm rounded-md transition-all shadow-md flex items-center space-x-2 active:scale-98"
+                            >
+                                <span>সব আইডি ক্যাটালগ দেখুন</span>
+                                <ArrowRight class="w-4 h-4" />
+                            </Link>
+
+                            <a
+                                href="#how-it-works"
+                                class="px-4 py-2.5 bg-[#181B21] hover:bg-[#20242C] text-[#EDE9DE] border border-[#2B2F38] hover:border-[#8E93A0] rounded-md text-xs sm:text-sm font-semibold transition-colors flex items-center space-x-1.5"
+                            >
+                                <span>লেনদেন নিয়মাবলী</span>
+                            </a>
+
+                            <a
+                                href="#scam-alert"
+                                class="px-4 py-2.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-md text-xs sm:text-sm font-semibold transition-colors flex items-center space-x-1.5"
+                            >
+                                <AlertTriangle class="w-4 h-4 text-[#E3A339]" />
+                                <span>স্ক্যাম সতর্কতা</span>
+                            </a>
+                        </div>
+
+                        <!-- Synchronized Trust Metrics Grid -->
                         <div
                             class="grid grid-cols-4 gap-2 pt-2 border-t border-[#2B2F38]"
                         >
@@ -664,49 +538,127 @@ const faqs = [
                             >
                                 <span
                                     class="font-['Sora',sans-serif] font-bold text-lg sm:text-xl text-[#3FA79B] block"
-                                    >{{ props.stats.availableCount }}</span
-                                >
+                                >{{ props.stats.availableCount }}</span>
                                 <span
                                     class="text-[10px] text-[#8E93A0] font-['Hind_Siliguri',sans-serif]"
-                                    >উপলব্ধ আইডি</span
-                                >
+                                >উপলব্ধ আইডি</span>
                             </div>
                             <div
                                 class="p-2.5 bg-[#181B21] rounded-md border border-[#2B2F38] text-center"
                             >
                                 <span
                                     class="font-['Sora',sans-serif] font-bold text-lg sm:text-xl text-[#E3A339] block"
-                                    >{{ props.stats.soldCount }}+</span
-                                >
+                                >{{ props.stats.soldCount }}+</span>
                                 <span
                                     class="text-[10px] text-[#8E93A0] font-['Hind_Siliguri',sans-serif]"
-                                    >সফল ডিল</span
-                                >
+                                >সফল ডিল</span>
                             </div>
                             <div
                                 class="p-2.5 bg-[#181B21] rounded-md border border-[#2B2F38] text-center"
                             >
                                 <span
                                     class="font-['Sora',sans-serif] font-bold text-lg sm:text-xl text-[#EDE9DE] block"
-                                    >১০০%</span
-                                >
+                                >১০০%</span>
                                 <span
                                     class="text-[10px] text-[#8E93A0] font-['Hind_Siliguri',sans-serif]"
-                                    >ভেরিফাইড প্রুফ</span
-                                >
+                                >ভেরিফাইড প্রুফ</span>
                             </div>
                             <div
                                 class="p-2.5 bg-[#181B21] rounded-md border border-[#2B2F38] text-center"
                             >
                                 <span
                                     class="font-['Sora',sans-serif] font-bold text-lg sm:text-xl text-[#3FA79B] block"
-                                    >০%</span
-                                >
+                                >০%</span>
                                 <span
                                     class="text-[10px] text-[#8E93A0] font-['Hind_Siliguri',sans-serif]"
-                                    >স্ক্যাম রেকর্ড</span
-                                >
+                                >স্ক্যাম রেকর্ড</span>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Free Fire Character with NO BACKGROUND & Floating Trust Badges -->
+                    <div class="lg:col-span-5 relative flex items-center justify-center min-h-[460px] sm:min-h-[520px]">
+                        <!-- Atmospheric Radiant Glow Behind Character -->
+                        <div
+                            class="absolute inset-0 flex items-center justify-center pointer-events-none"
+                        >
+                            <div
+                                class="w-[300px] sm:w-[380px] h-[300px] sm:h-[380px] rounded-full bg-gradient-to-tr from-[#E3A339]/25 via-[#3FA79B]/15 to-transparent blur-3xl opacity-80"
+                            ></div>
+                        </div>
+
+                        <!-- Floating Badge 1 (Top Left) -->
+                        <div
+                            class="absolute top-2 -left-2 sm:left-4 z-20 px-3 py-2 bg-[#181B21]/90 backdrop-blur-md border border-[#2B2F38] rounded-xl shadow-xl flex items-center space-x-2"
+                        >
+                            <div
+                                class="w-7 h-7 rounded-lg bg-[#E3A339]/20 border border-[#E3A339]/40 flex items-center justify-center text-[#E3A339]"
+                            >
+                                <Sparkles class="w-4 h-4 fill-current" />
+                            </div>
+                            <div>
+                                <p class="text-[11px] font-bold text-[#EDE9DE] font-['Sora',sans-serif]">
+                                    Official FF Vault
+                                </p>
+                                <p class="text-[9px] text-[#8E93A0]">
+                                    By Gaming With Masum
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2 (Top Right) -->
+                        <div
+                            class="absolute top-12 -right-2 sm:right-4 z-20 px-3 py-2 bg-[#181B21]/90 backdrop-blur-md border border-[#2B2F38] rounded-xl shadow-xl flex items-center space-x-2"
+                        >
+                            <div
+                                class="w-7 h-7 rounded-lg bg-[#3FA79B]/20 border border-[#3FA79B]/40 flex items-center justify-center text-[#3FA79B]">
+                                <ShieldCheck class="w-4 h-4" />
+                            </div>
+                            <div>
+                                <p class="text-[11px] font-bold text-[#EDE9DE] font-['Sora',sans-serif]">
+                                    100% Anti-Scam
+                                </p>
+                                <p class="text-[9px] text-[#3FA79B] font-semibold">
+                                    Verified Handover
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- The Cutout Free Fire Character (NO BACKGROUND) -->
+                        <div class="relative z-10 w-full max-w-[380px] sm:max-w-[420px] flex justify-center pt-6 pb-12">
+                            <img
+                                src="/images/ff_hero_character.png"
+                                alt="Gaming With Masum Free Fire Hero Character"
+                                class="w-full h-auto max-h-[480px] sm:max-h-[540px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)] filter hover:scale-102 transition-transform duration-500"
+                            />
+                        </div>
+
+                        <!-- Floating Card at Bottom of Character -->
+                        <div
+                            class="absolute bottom-2 inset-x-2 sm:inset-x-6 z-20 p-3 bg-[#181B21]/95 backdrop-blur-md border border-[#2B2F38] rounded-xl shadow-2xl flex items-center justify-between"
+                        >
+                            <div class="flex items-center space-x-2.5">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-[#E3A339]/20 border border-[#E3A339]/40 flex items-center justify-center text-[#E3A339]"
+                                >
+                                    <Flame class="w-4 h-4 fill-current" />
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-[#EDE9DE] font-['Sora',sans-serif]">
+                                        {{ props.stats.availableCount }} টি প্রিমিয়াম আইডি প্রস্তুত
+                                    </p>
+                                    <p class="text-[10px] text-[#8E93A0] font-['Hind_Siliguri',sans-serif]">
+                                        অন-ডিউটি মডারেটর: @masum, @habib_mod
+                                    </p>
+                                </div>
+                            </div>
+                            <Link
+                                href="/listings"
+                                class="px-3 py-1.5 bg-[#E3A339] hover:bg-[#E3A339]/90 text-[#0F1115] text-[11px] font-bold rounded shadow transition-all flex items-center space-x-1"
+                            >
+                                <span>ব্রাউজ করুন</span>
+                                <ChevronRight class="w-3.5 h-3.5" />
+                            </Link>
                         </div>
                     </div>
                 </div>
